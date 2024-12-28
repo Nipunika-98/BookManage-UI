@@ -4,6 +4,7 @@ import { ActivatedRoute,Router, RouterModule } from '@angular/router';
 import { BookService } from '../../services/book.service';
 import { Book } from '../../models/book.model';
 import { CommonModule } from '@angular/common';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-book-form',
@@ -41,7 +42,8 @@ export class BookFormComponent implements OnInit {
   ngOnInit(): void {
     this.bookId = +this.route.snapshot.paramMap.get('id')!;
     if (this.bookId) {
-      this.bookService.getBookById(this.bookId).subscribe((book) => {
+      // console.log("book form oninit")
+      this.bookService.getBookById(this.bookId).pipe(first()).subscribe((book) => {
         console.log(book);
         
         const formattedDate = this.formatDate(book.publicationDate);
@@ -66,7 +68,8 @@ export class BookFormComponent implements OnInit {
   onSubmit(): void {
     if (this.bookForm.valid) {
       const bookData: Book = { id: this.bookId || 0, ...this.bookForm.value };
-      this.bookService.createEditBook(bookData).subscribe(() => {
+      this.bookService.createEditBook(bookData).pipe(first()).subscribe(() => {
+        // console.log("book form onsubmit")
         this.router.navigate(['/']);
       });
     }
