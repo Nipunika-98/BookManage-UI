@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-import { ActivatedRoute,Router } from '@angular/router';
+import { FormBuilder,FormGroup,FormsModule,ReactiveFormsModule,Validators } from '@angular/forms';
+import { ActivatedRoute,Router, RouterModule } from '@angular/router';
 import { BookService } from '../../services/book.service';
 import { Book } from '../../models/book.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-book-form',
-  imports: [],
   templateUrl: './book-form.component.html',
-  styleUrl: './book-form.component.css'
+  styleUrl: './book-form.component.css',
+  imports: [RouterModule, CommonModule, FormsModule,ReactiveFormsModule]
 })
-export class BookFormComponent implements OnInit {
+export class BookFormComponent implements OnInit { 
   bookForm: FormGroup;
   bookId: number | null = null;
 
