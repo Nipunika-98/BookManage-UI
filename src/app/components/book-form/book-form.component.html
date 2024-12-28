@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <h1 class="mb-4">{{ bookId ? 'Edit Book' : 'Add Book' }}</h1>
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input id="title" class="form-control" formControlName="title" placeholder="Enter book title" />
+        <div *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched" class="text-danger">
+          Title is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="author" class="form-label">Author</label>
+        <input id="author" class="form-control" formControlName="author" placeholder="Enter book author" />
+        <div *ngIf="bookForm.get('author')?.invalid && bookForm.get('author')?.touched" class="text-danger">
+          Author is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="isbn" class="form-label">ISBN</label>
+        <input id="isbn" class="form-control" formControlName="isbn" placeholder="Enter ISBN number" />
+        <div *ngIf="bookForm.get('isbn')?.invalid && bookForm.get('isbn')?.touched" class="text-danger">
+          ISBN is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="publicationDate" class="form-label">Publication Date</label>
+        <input
+          id="publicationDate"
+          type="date"
+          class="form-control"
+          formControlName="publicationDate"
+        />
+        <div *ngIf="bookForm.get('publicationDate')?.invalid && bookForm.get('publicationDate')?.touched" class="text-danger">
+          Publication date is required.
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">
+          {{ bookId ? 'Update Book' : 'Add Book' }}
+        </button>
+        <a class="btn btn-secondary" routerLink="/">Cancel</a>
+      </div>
+    </form>
+  </div>
+  
