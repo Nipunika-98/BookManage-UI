@@ -29,14 +29,39 @@ export class BookFormComponent implements OnInit {
     });
   }
 
+  // ngOnInit(): void {
+  //   this.bookId = +this.route.snapshot.paramMap.get('id')!;
+  //   if (this.bookId) {
+  //     this.bookService.getBookById(this.bookId).subscribe((book) => {
+  //       console.log(book);
+  //       this.bookForm.patchValue(book);
+  //     });
+  //   }
+  // }
   ngOnInit(): void {
     this.bookId = +this.route.snapshot.paramMap.get('id')!;
     if (this.bookId) {
       this.bookService.getBookById(this.bookId).subscribe((book) => {
-        this.bookForm.patchValue(book);
+        console.log(book);
+        
+        const formattedDate = this.formatDate(book.publicationDate);
+        this.bookForm.patchValue({
+          ...book,
+          publicationDate: formattedDate, 
+        });
       });
     }
   }
+  
+ 
+  private formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+  
 
   onSubmit(): void {
     if (this.bookForm.valid) {

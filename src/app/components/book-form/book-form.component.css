@@ -1,0 +1,84 @@
+/* Container styles */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #73aab2;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styles */
+  h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  /* Form control styles */
+  .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Labels */
+  .form-label {
+    font-weight: 600;
+    color: #495057;
+  }
+  
+  /* Buttons */
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    padding: 0.5rem 1rem;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  .btn-secondary {
+    padding: 0.5rem 1rem;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  
+  /* Error messages */
+  .text-danger {
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+  
+  /* Small hint text */
+  .form-text {
+    font-size: 0.85rem;
+    color: #6c757d;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .container {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+  

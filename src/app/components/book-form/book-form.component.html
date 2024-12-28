@@ -18,6 +18,7 @@
       <div class="mb-3">
         <label for="isbn" class="form-label">ISBN</label>
         <input id="isbn" class="form-control" formControlName="isbn" placeholder="Enter ISBN number" />
+        <small class="form-text text-muted">E.g., 978-3-16-148410-0</small>
         <div *ngIf="bookForm.get('isbn')?.invalid && bookForm.get('isbn')?.touched" class="text-danger">
           ISBN is required.
         </div>

@@ -16,7 +16,7 @@ export class BookService {
   }
 
   getBookById(id: number): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}/Get?id=${id}`);
+    return this.http.get<Book>(`${this.apiUrl}/Get/${id}`);
   }
 
   createEditBook(book: Book): Observable<Book> {
@@ -24,6 +24,7 @@ export class BookService {
   }
 
   deleteBook(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/Delete?id=${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/Delete/${id}`);
   }
+  
 }
